@@ -1,0 +1,137 @@
+.conteiner-menu {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  max-width: 480px;
+  height: 100%;
+  padding: 48px 0px 48px 40px;
+  background-color: var(--color-hero-title);
+  z-index: 999;
+
+  transform: translateX(100%);
+  transition: transform 250ms var(--cubic-all);
+
+  @include table-min {
+    display: none;
+  }
+  &.is-open {
+    transform: translateX(0);
+  }
+
+  & .menu-toggle {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+  }
+}
+
+.menu-toggle {
+  padding: 0;
+  margin: 0;
+  min-width: 40px;
+  min-height: 40px;
+  border: none;
+  background-color: inherit;
+  cursor: pointer;
+  @include flex-centered;
+
+  @include table-min {
+    display: none;
+  }
+
+  &__svg {
+    fill: var(--color-secondery-text);
+
+    &:active {
+      fill: var(--color-text-logonav);
+    }
+  }
+}
+
+// Navigation
+
+.navigation-mobil {
+  margin-bottom: auto;
+
+  &__item:not(:last-child) {
+    margin-bottom: 32px;
+  }
+
+  &__link {
+    @include font(40px, 500, 1.2, 0.02em);
+    color: var(--color-secondery-text);
+  }
+
+  &__current {
+    color: var(--color-text-logonav);
+  }
+}
+
+// Contacts
+
+.contact-mobil {
+  margin-bottom: 64px;
+
+  &__item:not(:last-child) {
+    margin-bottom: 32px;
+  }
+  &__link {
+    @include font(24px, 500, 1.2, 0.02em);
+
+    color: var(--color-primery-text);
+
+    &--colorblue {
+      color: var(--color-text-logonav);
+
+      @include mobile-min {
+        @include font(34px, 500, 1.2, 0.02em);
+      }
+    }
+  }
+}
+
+.social-mobil {
+  display: flex;
+  align-items: center;
+
+  &__item {
+    display: flex;
+    align-items: center;
+
+    &:not(:first-child) {
+      margin-left: 20px;
+    }
+  }
+
+  &__link {
+    position: relative;
+
+    @include font(12px, 500, 1.2, 0.02em);
+
+    color: var(--color-text-logonav);
+
+    @include mobile-min {
+      @include font(18px, 500, 1.2, 0.02em);
+    }
+
+    &--element::before {
+      content: "";
+      display: inline-block;
+      top: 0;
+      right: -8px;
+      position: absolute;
+      width: 22px;
+      height: 1px;
+
+      transform: rotate(-90deg);
+      transform-origin: top right;
+
+      background-color: var(--color-border-modal);
+
+      padding-left: 10px;
+    }
+  }
+}
